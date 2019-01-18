@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const { Node, LinkedList } = require('../solution');
+const { Node, LinkedList } = require('../LinkedList');
 
 describe('Node', ()=>{
     it('should start with a given data property', ()=>{
@@ -35,5 +35,15 @@ describe('Linked List', ()=>{
         list.prependNode(1);
         expect(list.head.data).to.equal(1);
         expect(list.head.next.data).to.equal(2);
+    });
+    it('should pop nodes from the back', ()=>{
+        let list = new LinkedList();
+        list.appendNode(1);
+        list.appendNode(2);
+        let removedNode = list.pop();
+        expect(removedNode.data).to.equal(2);
+        let secondRemovedNode = list.pop();
+        expect(secondRemovedNode.data).to.equal(1);
+        expect(list.head).to.equal(null);
     });
 })
